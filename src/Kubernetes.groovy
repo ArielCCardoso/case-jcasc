@@ -61,7 +61,7 @@ vars.add(new SecretEnvVar("GIT_CONFIG","jenkins","GIT_CONFIG"))
 List<ContainerTemplate> getContainers(String slave) {
 
     List<ContainerTemplate> containers = new ArrayList<ContainerTemplate>()
-    ContainerTemplate jnlp = new ContainerTemplate("jnlp", "arielccardoso/jcasc-jnlp:3.35-5-alpine", 'jenkins-agent', '${computer.jnlpmac} ${computer.name}')
+    ContainerTemplate jnlp = new ContainerTemplate("jnlp", "arielccardoso/jcasc-jnlp:3.35-5-alpine", '/entrypoint', '${computer.jnlpmac} ${computer.name}')
     jnlp.setAlwaysPullImage(true)
     jnlp.setWorkingDir("/builds")
     containers.add(jnlp)
