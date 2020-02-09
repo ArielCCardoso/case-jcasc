@@ -7,7 +7,7 @@ import groovy.transform.Field
 
 Jenkins jenkins = Jenkins.getInstanceOrNull()
 
-def jenkinsUrl = System.getenv('JENKINS_ENDPOINTa') ?: "https://jenkins-dev.arielcardoso.net"
+def jenkinsUrl = System.getenv('JENKINS_ENDPOINT') ?: "https://jenkins-dev.arielcardoso.net"
 def jenkinsTunnel = System.getenv('JENKINS_TUNNEL') ?: "http://jenkins:50000"
 
 def k8sName = System.getenv('KUBERNETES_NAME') ?: "DevOps-k8s"
