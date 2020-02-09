@@ -1,0 +1,42 @@
+---
+project:
+ name: 'cartao-branco'
+ display_name: 'Cartao Branco'
+ description: 'Projeto Demo Case Cartão Branco criado via Groovy Hook Script.'
+ global_parameters:
+ - name: 'GITFLOW'
+   values:
+     - 'false'
+     - 'true'
+   description: 'Define se o projeto é baseado no framework GitFlow.'
+ - name: 'SLAVE_BUILD'
+   values:
+     - 'docker'
+     - 'kubectl'
+ - name: 'SLAVE_DEPLOY'
+   values:
+     - 'kubectl'
+     - 'docker'
+ - name: 'MANIFEST_PATH'
+   values:
+     - 'k8s-manifest.yml'
+ environments:
+ - name: 'demo'
+   display_name: 'Demo'
+   description: 'Path para Demo do Teste Técnico'
+   jobs:
+   - name: 'cb-front'
+     display_name: 'FrontEnd - Blazor'
+     description: 'Job para build da aplicação.'
+     triggers:
+     - type: 'GitLabPushTrigger'
+       triggerOnPush: true
+       #More fields: https://github.com/jenkinsci/gitlab-plugin/blob/master/src/main/java/com/dabsquared/gitlabjenkins/GitLabPushTrigger.java
+     gitlab_connection: 'gitlab'
+     build_discard:
+      daysToKeep: '30'
+      buildsToKeep: '20'
+     scm:
+      url: 'git@gitlab.com:arielccardoso/cb-front.git'
+      branch: '${gitBranch}'
+      script: 'Jenkinsfile'
