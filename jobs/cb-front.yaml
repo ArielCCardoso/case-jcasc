@@ -10,10 +10,14 @@ project:
      - 'true'
    description: 'Define se o projeto é baseado no framework GitFlow.'
  - name: 'SLAVE_BUILD'
+   type: 'Choice'
+   description: "Slave para build."
    values:
      - 'docker'
      - 'kubectl'
  - name: 'SLAVE_DEPLOY'
+   type: 'Choice'
+   description: "Slave para deploy."
    values:
      - 'kubectl'
      - 'docker'
@@ -39,5 +43,7 @@ project:
       script: 'Jenkinsfile'
      parameters:
       - name: 'MANIFEST_PATH'
+        type: 'Choice'
+        description: "Path no manifesto do K8s"
         values:
           - 'k8s-manifest.yml'
