@@ -64,6 +64,7 @@ List<ContainerTemplate> getContainers(String slave) {
     ContainerTemplate jnlp = new ContainerTemplate("jnlp", "arielccardoso/jcasc-jnlp:3.35-5-alpine", '/entrypoint', '${computer.jnlpmac} ${computer.name}')
     jnlp.setAlwaysPullImage(true)
     jnlp.setWorkingDir("/builds")
+    jnlp.setEnvVars(vars)
     containers.add(jnlp)
 
     ContainerTemplate azCli = new ContainerTemplate("azure-cli", "arielccardoso/azure-cli:2.x","/entrypoint", "tail -f /dev/null")
