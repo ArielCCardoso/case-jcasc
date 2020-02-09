@@ -17,9 +17,6 @@ project:
    values:
      - 'kubectl'
      - 'docker'
- - name: 'MANIFEST_PATH'
-   values:
-     - 'k8s-manifest.yml'
  environments:
  - name: 'demo'
    display_name: 'Demo'
@@ -40,3 +37,7 @@ project:
       url: 'git@gitlab.com:arielccardoso/cb-front.git'
       branch: '${gitBranch}'
       script: 'Jenkinsfile'
+     parameters:
+      - name: 'MANIFEST_PATH'
+        values:
+          - 'k8s-manifest.yml'
